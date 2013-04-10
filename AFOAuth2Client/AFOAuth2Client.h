@@ -49,6 +49,8 @@
 
 @property (nonatomic, strong) NSString *tokenEndpointPath;
 
+@property (nonatomic, strong) AFOAuthCredential *credential;
+
 ///------------------------------------------------
 /// @name Creating and Initializing OAuth 2 Clients
 ///------------------------------------------------
