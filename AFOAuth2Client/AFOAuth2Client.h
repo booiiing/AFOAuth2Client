@@ -73,6 +73,8 @@
  */
 - (void)setAuthorizationHeaderWithCredential:(AFOAuthCredential *)credential;
 
+- (void)setClientAuthorizationHeader;
+
 ///---------------------
 /// @name Authenticating
 ///---------------------

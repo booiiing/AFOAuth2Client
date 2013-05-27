@@ -127,6 +127,11 @@ static NSMutableDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *i
     }
 }
 
+- (void)setClientAuthorizationHeader {
+    [self setAuthorizationHeaderWithUsername:self.clientID password:self.secret];
+}
+
+
 #pragma mark -
 
 - (void)obtainAccessTokenUsingAuthorizationCodeGrantWithCode:(NSString *)code
