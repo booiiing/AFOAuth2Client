@@ -131,6 +131,12 @@ static NSMutableDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *i
     [self setAuthorizationHeaderWithUsername:self.clientID password:self.secret];
 }
 
+- (NSDictionary *)appendClientCredentialsToParameters:(NSDictionary *)parameters {
+    NSMutableDictionary *mutableParameters = parameters.mutableCopy;
+    [mutableParameters setObject:self.clientID forKey:@"client_id"];
+    [mutableParameters setValue:self.secret forKey:@"client_secret"];
+    return [NSDictionary dictionaryWithDictionary:mutableParameters];
+}
 
 #pragma mark -
 
@@ -191,10 +197,7 @@ static NSMutableDictionary * AFKeychainQueryDictionaryWithIdentifier(NSString *i
                                    success:(void (^)(AFOAuthCredential *))success
                                    failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    [mutableParameters setObject:self.clientID forKey:@"client_id"];
-    [mutableParameters setValue:self.secret forKey:@"client_secret"];
-    parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+    parameters = [self appendClientCredentialsToParameters:parameters];
 
     [self clearAuthorizationHeader];
     

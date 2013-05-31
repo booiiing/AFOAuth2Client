@@ -74,6 +74,7 @@
 - (void)setAuthorizationHeaderWithCredential:(AFOAuthCredential *)credential;
 
 - (void)setClientAuthorizationHeader;
+- (NSDictionary *)appendClientCredentialsToParameters:(NSDictionary *)parameters;
 
 ///---------------------
 /// @name Authenticating
